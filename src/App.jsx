@@ -2,10 +2,11 @@ import React from "react";
 import "./sass/App.css";
 
 export default function App(){
+    //State management
     const [theme, setTheme] = React.useState("--1")
     const [display, setDisplay] = React.useState("0")
-    const [result, setResult] = React.useState()
 
+    //Theme switch logic
     function handleThemeSwitch(){
         if(theme === "--1"){
             setTheme("--2")
@@ -18,34 +19,13 @@ export default function App(){
         }
     }
 
-    function handleNumberPress(number){
+    //User Interaction
+    function handleInputPress(input){
         if(display === "0" || display === "Error"){
-            setDisplay(number)
+            setDisplay(input)
         }
         else{
-            setDisplay((prev) => prev + number)
-        }
-    }
-
-    function handleMathPress(math){
-        if(display === "0" || display === "Error"){
-            setDisplay(math)
-        }
-        else{
-            setDisplay((prev) => prev + math)
-        }
-    }
-
-    function handleEqualPress(){
-        if(display != "Error"){
-            try{
-                let calc = eval(display)
-                setDisplay(calc.toString())
-            }
-            catch(error){
-                setDisplay("Error")
-                console.log(error)
-            }
+            setDisplay((prev) => prev + input)
         }
     }
 
@@ -61,6 +41,20 @@ export default function App(){
             }
             else{
                 setDisplay(del)
+            }
+        }
+    }
+
+    //Math calculation logic
+    function handleEqualPress(){
+        if(display != "Error"){
+            try{
+                let calc = eval(display)
+                setDisplay(calc.toString())
+            }
+            catch(error){
+                setDisplay("Error")
+                console.log(error)
             }
         }
     }
@@ -86,28 +80,26 @@ export default function App(){
                 <p>{display}</p>
             </section>
 
-            <h1>{result}</h1>
-
             <section className={"keyboard keyboard" + theme}>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("7")}>7</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("8")}>8</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("9")}>9</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("7")}>7</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("8")}>8</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("9")}>9</button>
                 <button type="button" className={"btn-del btn-del" + theme} onClick={handleDelPress}>DEL</button>
 
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("4")}>4</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("5")}>5</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("6")}>6</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleMathPress("+")}>+</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("4")}>4</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("5")}>5</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("6")}>6</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("+")}>+</button>
 
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("1")}>1</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("2")}>2</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("3")}>3</button>
-                <button type="button" className={"btn-math btn-math" + theme} onClick={e => handleMathPress("-")}>-</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("1")}>1</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("2")}>2</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("3")}>3</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("-")}>-</button>
 
-                <button type="button" className={"btn-math btn-math" + theme} onClick={e => handleMathPress(".")}>.</button>
-                <button type="button" className={"btn-num btn-num" + theme} onClick={e => handleNumberPress("0")}>0</button>
-                <button type="button" className={"btn-math btn-math" + theme} onClick={e => handleMathPress("/")}>/</button>
-                <button type="button" className={"btn-math btn-math" + theme} onClick={e => handleMathPress("*")}>x</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress(".")}>.</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("0")}>0</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("/")}>/</button>
+                <button type="button" className={"btn-input btn-input" + theme} onClick={e => handleInputPress("*")}>x</button>
 
                 <button type="button" className={"btn-reset btn-reset" + theme} onClick={handleResetPress}>RESET</button>
                 <button type="button" className={"btn-equal btn-equal" + theme} onClick={handleEqualPress}>=</button>

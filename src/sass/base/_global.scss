@@ -9,14 +9,20 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.body{
+#root{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .app{
     width: 100vw;
+    min-width: 320px;
     height: 100vh;
     padding-top: 28px;
+    margin: 0;
 
     &--1{
         background-color: u.$theme1-background1;
