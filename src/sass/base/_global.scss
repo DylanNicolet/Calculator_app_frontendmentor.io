@@ -1,0 +1,35 @@
+@use "../utils" as u;
+
+* { 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.body{
+    text-align: center;
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 28px;
+
+    &--1{
+        background-color: u.$theme1-background1;
+        color: u.$theme1-text-secondary;
+    }
+
+    &--2{
+        background-color: u.$theme2-background1;
+        color: u.$theme2-text-primary;
+    }
+
+    &--3{
+        background-color: u.$theme3-background1;
+        color: u.$theme3-text-primary;
+    }
+}
